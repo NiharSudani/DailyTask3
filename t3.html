@@ -28,7 +28,9 @@
                         <label for="amount">Amount:</label>
                         <input type="number" id="amount" class="form-control" required>
                     </div>
-                    <button type="submit" id="addButton" class="btn btn-primary">Add Expense</button>
+                    <div class="form-group center-button">
+                        <button type="submit" id="addButton" class="btn btn-primary">Add Expense</button>
+                    </div>
                 </form>
                 <br>
                 <table class="table table-striped table-bordered" id="expenseTable">
@@ -42,7 +44,9 @@
                     <tbody></tbody>
                 </table>
                 <br>
-                <button onclick="downloadCSV()">Download CSV</button>
+                <div class="center-button">
+                    <button onclick="downloadCSV()">Download CSV</button>
+                </div>
                 <br>
                 <h2>Expense Chart</h2>
                 <canvas id="expenseChart" width="400" height="200"></canvas>

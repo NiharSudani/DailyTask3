@@ -6,15 +6,23 @@ function addExpense() {
     console.log('Date:', date, 'Category:', category, 'Amount:', amount);
 
     var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-    expenses.push({ date: date, category: category, amount: amount });
+    expenses.push({ date: formatDate(date), category: category, amount: amount });
     localStorage.setItem('expenses', JSON.stringify(expenses));
     var tableBody = document.getElementById('expenseTable').getElementsByTagName('tbody')[0];
-    var row = '<tr><td>' + date + '</td><td>' + category + '</td><td>' + amount + '</td></tr>';
+    var row = '<tr><td>' + formatDate(date) + '</td><td>' + category + '</td><td>' + amount + '</td></tr>';
     tableBody.insertAdjacentHTML('beforeend', row);
 
     resetForm();
     updateChart();
     return false;
+}
+
+function formatDate(date) {
+    var d = new Date(date);
+    var day = ('0' + d.getDate()).slice(-2);
+    var month = ('0' + (d.getMonth() + 1)).slice(-2);
+    var year = d.getFullYear();
+    return `${day}-${month}-${year}`;
 }
 
 function resetForm() {
